@@ -57,3 +57,14 @@ class Healthbox():
         hb_response = requests.get(url=endpoint).json()
         gaqi = hb_response['sensor'][0]['parameter']['index']['value']
         return gaqi
+
+    def get_rooms():
+        endpoint = 'http://' + self.ip_address + '/v1/api/data/current'
+        hb_response = requests.get(url=endpoint).json()
+        return hb_response
+
+    def set_ventilation_level(self, room_id, level, timeout):
+        endpoint = 'http://' + self.ip_address + '/v1/api/boost/' + room_id
+        headers = {'content-type': 'application/json'}
+        payload = {'enable': 'true', 'level': level, 'timeout': timeout }  
+        hb_response = requests.put(url=endpoint, data=payload, headers=headers)
