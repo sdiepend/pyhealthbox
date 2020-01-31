@@ -68,3 +68,11 @@ class Healthbox():
         headers = {'content-type': 'application/json'}
         payload = {'enable': 'true', 'level': level, 'timeout': timeout }  
         hb_response = requests.put(url=endpoint, data=payload, headers=headers)
+
+
+def Room():
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
+    def get_flow_rate():
